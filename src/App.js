@@ -1,33 +1,15 @@
-import logo from './logo.svg';
 import './App.css';
-import { Admin, ListGuesser, Resource } from 'react-admin';
+import { Admin, ListGuesser, Resource, memoryStore } from 'react-admin';
 import { authProvider } from './utils/authProvider';
-import { ThemeProvider, createTheme, Typography } from '@mui/material';
-import Fjallaone from './assets/fonts/fjallaone.woff2';
+import { ThemeProvider, Typography } from '@mui/material';
 import CssBaseline from "@mui/material/CssBaseline";
+import theme from './utils/theme';
+import dataProvider from './utils/dataProvider';
 
-function App() {
+import Dashboard from './dashboard';
+import randomUser from './randomUser';
 
-  const theme = createTheme({
-    typography: {
-      fontFamily: "fjallaone"
-    },
-    components: {
-      MuiCssBaseline: {
-        styleOverrides: {
-          "@font-face": {
-            fontFamily: "fjallaone",
-            src: `url(${Fjallaone}) format("truetype")`
-          },
-          body: {
-            fontFamily: "fjallaone",
-            color: "red"
-          }
-        }
-      }
-    }
-  });
-
+const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -35,8 +17,16 @@ function App() {
       <Admin
         authProvider={authProvider}
         theme={theme}
+        dataProvider={dataProvider}
+        requireAuth
+        dashboard={Dashboard}
+        store={memoryStore()}
+        title="My Custom Admin"
       >
+        
         <Resource name='tags' list={ListGuesser} />
+        <Resource name='users' list={ListGuesser} />
+        <Resource name='randomUser' {...randomUser} />
       </Admin>
     </ThemeProvider>
     // <ThemeProvider theme={theme}>
