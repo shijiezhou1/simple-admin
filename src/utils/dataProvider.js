@@ -36,6 +36,4 @@ dataProvider = {
   }
 }
 
-console.log('how many there', dataProvider);
-
 export default dataProvider;
