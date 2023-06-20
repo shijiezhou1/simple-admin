@@ -78,15 +78,11 @@ export default () => {
       <div className="query-builder-result">
         <div>
           Query string:{" "}
-          <pre>
-            {JSON.stringify(QbUtils.queryString(tree, config))}
-          </pre>
+          <pre>{JSON.stringify(QbUtils.queryString(tree, config))}</pre>
         </div>
         <div>
           MongoDb query:{" "}
-          <pre>
-            {JSON.stringify(QbUtils.mongodbFormat(tree, config))}
-          </pre>
+          <pre>{JSON.stringify(QbUtils.mongodbFormat(tree, config))}</pre>
         </div>
         <div>
           SQL where:{" "}
@@ -94,9 +90,7 @@ export default () => {
         </div>
         <div>
           JsonLogic:{" "}
-          <pre>
-            {JSON.stringify(QbUtils.jsonLogicFormat(tree, config))}
-          </pre>
+          <pre>{JSON.stringify(QbUtils.jsonLogicFormat(tree, config))}</pre>
         </div>
       </div>
     );

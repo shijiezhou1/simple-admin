@@ -1,13 +1,13 @@
-import './App.css';
-import { Admin, ListGuesser, Resource, memoryStore } from 'react-admin';
-import { authProvider } from './utils/authProvider';
-import { ThemeProvider, Typography } from '@mui/material';
+import "./App.css";
+import { Admin, ListGuesser, Resource, memoryStore } from "react-admin";
+import { authProvider } from "./utils/authProvider";
+import { ThemeProvider, Typography } from "@mui/material";
 import CssBaseline from "@mui/material/CssBaseline";
-import theme from './utils/theme';
-import dataProvider from './utils/dataProvider';
+import theme from "./utils/theme";
+import dataProvider from "./utils/dataProvider";
 
-import Dashboard from './dashboard';
-import randomUser from './randomUser';
+import Dashboard from "./dashboard";
+import randomUser from "./randomUser";
 
 const App = () => {
   return (
@@ -20,24 +20,14 @@ const App = () => {
         dataProvider={dataProvider}
         requireAuth
         dashboard={Dashboard}
-        store={memoryStore()}
         title="My Custom Admin"
       >
-        
-        <Resource name='tags' list={ListGuesser} />
-        <Resource name='users' list={ListGuesser} />
-        <Resource name='randomUser' {...randomUser} />
+        <Resource name="tags" list={ListGuesser} />
+        <Resource name="users" list={ListGuesser} />
+        <Resource name="randomUser" {...randomUser} />
       </Admin>
     </ThemeProvider>
-    // <ThemeProvider theme={theme}>
-    //    <CssBaseline />
-    //   <Admin
-    //     authProvider={authProvider}
-    //   >
-    //     <Resource name='tags' list={ListGuesser} />
-    //   </Admin>
-    // </ThemeProvider>
   );
-}
+};
 
 export default App;
