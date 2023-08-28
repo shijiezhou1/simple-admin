@@ -16,6 +16,9 @@ export const dataSlice = createSlice({
     ],
     data: null,
     text: "some text",
+    text2: {
+      abc:123,
+    }
   },
   reducers: {
     updateDynamicData: (state, action) => {
@@ -28,6 +31,9 @@ export const dataSlice = createSlice({
     decrement: (state) => {
       state.value.pop();
     },
+    setData: (state, action) => {
+      state.text2 = action.payload;
+    }
   },
   extraReducers: {
     [getData.fulfilled]: (state, action) => {
@@ -37,7 +43,7 @@ export const dataSlice = createSlice({
 });
 
 // action
-export const { increment, decrement, updateDynamicData } = dataSlice.actions;
+export const { increment, decrement, updateDynamicData, setData } = dataSlice.actions;
 
 // state
 export const selectData = (state) => state.data;

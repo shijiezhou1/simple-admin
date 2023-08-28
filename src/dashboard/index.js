@@ -9,7 +9,7 @@ import { EDITOR_BLOCKS } from "config/constant";
 import { useEffect, useState, useMemo, useRef } from "react";
 import { createReactEditorJS } from "react-editor-js";
 import { useSelector } from "react-redux";
-import { getData, selectData, updateDynamicData } from "reducers/dataSlice";
+import { getData, selectData, setData, updateDynamicData } from "reducers/dataSlice";
 import { useDispatch } from "react-redux";
 import Classcomponent from "components/Classcomponent";
 import { debounce } from "lodash";
@@ -54,7 +54,7 @@ const Dashboard = () => {
     <Card>
       <Title title="Welcome to the administration" />
       <CardContent>Lorem ipsum sic dolor amet...</CardContent>
-      <CustomQuerybuilder />
+      {/* <CustomQuerybuilder /> */}
       {/* <Posts />
       <Querybuilder />
       <TextField
@@ -65,7 +65,18 @@ const Dashboard = () => {
       /> */}
       <Divider />
 
-      <TextField variant="outlined" onChange={() => {}} label="simples" />
+      <Typography>
+        show undefined value 1:
+        {dt.text2.abc||'cannot show'}
+      </Typography>
+
+      <Typography>
+        show undefined value 2:
+        {dt.text2.kkk||'cannot show'}
+      </Typography>
+
+    
+      <TextField variant="outlined" onChange={() => { }} label="simples" />
 
       <Divider />
 
@@ -79,8 +90,8 @@ const Dashboard = () => {
 
       {dt.data && dt.data.length > 0
         ? dt.data.map((r, idx) => (
-            <Typography key={idx}>{r.firstName}</Typography>
-          ))
+          <Typography key={idx}>{r.firstName}</Typography>
+        ))
         : null}
       <Divider />
       {/* <ReactEditorJS defaultValue={EDITOR_BLOCKS} /> */}

@@ -1,5 +1,9 @@
 import { Component } from "react";
 import { get } from "lodash";
+import { Typography, Box } from "@mui/material";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { selectData, setData } from "reducers/dataSlice";
 
 // class Classcomponent extends Component {
 //   get computed() {
@@ -24,11 +28,22 @@ const Classcomponent = (props) => {
   const computed = get(props.value, "data[0].firstName", "");
   const computed2 = get(props.value, "data[0].lastName", "");
 
+  const dispatch = useDispatch()
+  const dt = useSelector(selectData);
+
+  useEffect(()=>{
+    dispatch(setData({abc: 321}));
+  },[])
+
   return (
-    <div>
+    <Box>
       ----------------------------------------
       {computed}, {computed2}
-    </div>
+
+      <Typography>
+        {dt.data.total2}
+      </Typography>
+    </Box>
   );
 };
 
