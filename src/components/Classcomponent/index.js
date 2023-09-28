@@ -28,21 +28,19 @@ const Classcomponent = (props) => {
   const computed = get(props.value, "data[0].firstName", "");
   const computed2 = get(props.value, "data[0].lastName", "");
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const dt = useSelector(selectData);
 
-  useEffect(()=>{
-    dispatch(setData({abc: 321}));
-  },[])
+  useEffect(() => {
+    dispatch(setData({ abc: 321 }));
+  }, []);
 
   return (
     <Box>
       ----------------------------------------
       {computed}, {computed2}
-
-      <Typography>
-        {dt.data.total2}
-      </Typography>
+      asd asasdsdasdasdsdawe this is error
+      {/* asda dasd s<Typography>{dt.data.total2}</Typography> */}
     </Box>
   );
 };
