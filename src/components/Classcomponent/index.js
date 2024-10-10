@@ -1,9 +1,9 @@
 import { Component } from "react";
 import { get } from "lodash";
-import { Typography, Box } from "@mui/material";
+import { Typography, Box, Button } from "@mui/material";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectData, setData } from "reducers/dataSlice";
+import { selectData, setData, dataAddOne, dataRemoveOne } from "reducers/dataSlice";
 
 // class Classcomponent extends Component {
 //   get computed() {
@@ -31,9 +31,19 @@ const Classcomponent = (props) => {
   const dispatch = useDispatch()
   const dt = useSelector(selectData);
 
-  useEffect(()=>{
-    dispatch(setData({abc: 321}));
-  },[])
+  useEffect(() => {
+    // dispatch(setData({ abc: 321 }));
+  }, [])
+
+  const handleDataAddOne = (event) => {
+    const newData = Math.floor(Math.random() * 10);
+    dispatch(dataAddOne({ id: 'a' + newData, name: '苏' + newData }));
+  }
+
+  const handleDataRemoveOne = ()=> {
+    const newData = Math.floor(Math.random() * 10);
+    dispatch(dataRemoveOne('a' +  newData));
+  }
 
   return (
     <Box>
@@ -41,8 +51,11 @@ const Classcomponent = (props) => {
       {computed}, {computed2}
 
       <Typography>
-        {dt.data.total2}
+        {/* {dt.data.total2} */}
       </Typography>
+
+      <Button onClick={handleDataAddOne}>handleDataAddOne</Button>
+      <Button onClick={handleDataRemoveOne}>handleDataRemoveOne</Button>
     </Box>
   );
 };

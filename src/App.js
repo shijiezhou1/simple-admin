@@ -8,6 +8,7 @@ import dataProvider from "./utils/dataProvider";
 
 import Dashboard from "./dashboard";
 import randomUser from "./randomUser";
+import bigTable from "./bigTable";
 import { Provider } from "react-redux";
 import store from "./reducers";
 
@@ -28,6 +29,7 @@ const App = () => {
           <Resource name="tags" list={ListGuesser} />
           <Resource name="users" list={ListGuesser} />
           <Resource name="randomUser" {...randomUser} />
+          <Resource name="bigTable" {...bigTable} />
         </Admin>
       </ThemeProvider>
     </Provider>

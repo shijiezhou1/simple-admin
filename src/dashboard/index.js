@@ -4,7 +4,7 @@ import Posts from "components/posts";
 import Querybuilder from "components/querybuilder";
 import { Title } from "react-admin";
 
-import { Divider, TextField, Typography } from "@mui/material";
+import { Box, Divider, TextField, Typography } from "@mui/material";
 import { EDITOR_BLOCKS } from "config/constant";
 import { useEffect, useState, useMemo, useRef } from "react";
 import { createReactEditorJS } from "react-editor-js";
@@ -15,6 +15,9 @@ import Classcomponent from "components/Classcomponent";
 import { debounce } from "lodash";
 import SetTimeoutTextField from "components/settimeoutTextfield";
 import DebounceTextfield from "components/debouceTextfield";
+import MultipleEmail from "components/multipleEmail";
+import DropdownExample from "components/dropdownExample";
+import SimplePopper from "components/simplePopper";
 
 const ReactEditorJS = createReactEditorJS();
 
@@ -53,9 +56,9 @@ const Dashboard = () => {
   return (
     <Card>
       <Title title="Welcome to the administration" />
-      <CardContent>Lorem ipsum sic dolor amet...</CardContent>
-      {/* <CustomQuerybuilder /> */}
-      {/* <Posts />
+      <CardContent>
+        {/* <CustomQuerybuilder /> */}
+        {/* <Posts />
       <Querybuilder />
       <TextField
         value={formatedValue}
@@ -63,38 +66,23 @@ const Dashboard = () => {
         variant="outlined"
         onChange={handleExcelPasteData}
       /> */}
-      <Divider />
-
-      <Typography>
-        show undefined value 1:
-        {dt.text2.abc||'cannot show'}
-      </Typography>
-
-      <Typography>
-        show undefined value 2:
-        {dt.text2.kkk||'cannot show'}
-      </Typography>
-
-    
-      <TextField variant="outlined" onChange={() => { }} label="simples" />
-
-      <Divider />
-
-      <SetTimeoutTextField />
-
+        <Divider />
+        {/* <MultipleEmail /> */}
+        {/* <Card>
+        <CardContent><DropdownExample /></CardContent>
+      </Card>
+      <Box>adasd sasdkja dasjd asjd aks ja</Box>
+      <Divider /> */}
+        <SimplePopper />
+        {/* <SetTimeoutTextField />
       <DebounceTextfield />
-
       <Classcomponent value={dt} />
-
       {/* {JSON.stringify(dt.data)} */}
+        {/* <ReactEditorJS defaultValue={EDITOR_BLOCKS} /> */}
+      </CardContent>
 
-      {dt.data && dt.data.length > 0
-        ? dt.data.map((r, idx) => (
-          <Typography key={idx}>{r.firstName}</Typography>
-        ))
-        : null}
-      <Divider />
-      {/* <ReactEditorJS defaultValue={EDITOR_BLOCKS} /> */}
+
+
     </Card>
   );
 };

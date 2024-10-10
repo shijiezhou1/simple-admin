@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk, createEntityAdapter } from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const getData = createAsyncThunk("data/getData", async () => {
@@ -6,20 +6,25 @@ export const getData = createAsyncThunk("data/getData", async () => {
   return response;
 });
 
+const dataAdapter = createEntityAdapter({
+  // Keep the "all IDs" array sorted based on book titles
+  sortComparer: (a, b) => a.name.localeCompare(b.name),
+})
+
 export const dataSlice = createSlice({
   name: "role",
-  initialState: {
-    value: [
-      { id: 1, name: "admin" },
-      { id: 2, name: "viewer" },
-      { id: 3, name: "admin" },
-    ],
+  initialState: dataAdapter.getInitialState({
+    // value: [
+    //   { id: 1, name: "admin" },
+    //   { id: 2, name: "viewer" },
+    //   { id: 3, name: "admin" },
+    // ],
     data: null,
-    text: "some text",
-    text2: {
-      abc:123,
-    }
-  },
+    // text: "some text",
+    // text2: {
+    //   abc:123,
+    // }
+  }),
   reducers: {
     updateDynamicData: (state, action) => {
       const { name, value } = action.payload;
@@ -33,7 +38,9 @@ export const dataSlice = createSlice({
     },
     setData: (state, action) => {
       state.text2 = action.payload;
-    }
+    },
+    dataAddOne:dataAdapter.addOne,
+    dataRemoveOne:dataAdapter.removeOne
   },
   extraReducers: {
     [getData.fulfilled]: (state, action) => {
@@ -43,7 +50,7 @@ export const dataSlice = createSlice({
 });
 
 // action
-export const { increment, decrement, updateDynamicData, setData } = dataSlice.actions;
+export const { increment, decrement, updateDynamicData, setData, dataAddOne, dataRemoveOne } = dataSlice.actions;
 
 // state
 export const selectData = (state) => state.data;
