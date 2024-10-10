@@ -28,7 +28,7 @@ const Classcomponent = (props) => {
   const computed = get(props.value, "data[0].firstName", "");
   const computed2 = get(props.value, "data[0].lastName", "");
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const dt = useSelector(selectData);
 
   useEffect(() => {

@@ -4,6 +4,8 @@ import dataSlice from "./dataSlice";
 
 const middlewares = [];
 
+console.log("environment", process.env);
+
 if (process.env.NODE_ENV === "development") {
   const { createLogger } = require("redux-logger");
   const logger = createLogger({
